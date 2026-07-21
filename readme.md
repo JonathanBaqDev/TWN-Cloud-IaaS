@@ -1,22 +1,23 @@
-# Java-React Example
+# Java-React app deployed on Digital Ocean Example
 
-An example of how to use JS frontend to consume an endpoint written in Java.
+An example of how to deploy an existing Java-React application on a Digital Ocean Droplet.
 
-## Frontend technologies
+## Provision VM
+- Create a "Droplet" VM on Digital Ocean
+- Add your SSH key - generate using `--ssh-keygen` and add the public key
+- Create a firewall rule to allow inbound connections from SSH - TCP - 22 from the IP of the device you will use to connect
+- SSH to the Droplet
+- Once connected, install Java 17 using `apt install`
 
-- [React](https://facebook.github.io/react/) - UI Library
-- [Redux](http://redux.js.org/) - State container
+## Deploy application build
+- Clone the repository (original repos cited below)
+- On your local machine, build the application using `gradle build`
+- The .jar file will be in build/libs - copy to your Droplet using `scp <file path> <destination path>`
+- On the Doplet in the directory of the copied file, run the application using `java -jar <file.jar>` - run in the background by adding `&&` to the command
 
-## Additional information
-
-This project is a part of a [presentation](https://docs.google.com/presentation/d/1-yZhsM43cyWWDVn6EUtK_wc39FAv-19_jwsKXlTe2o8/edit?usp=sharing)
-
-Related projects:
-
-- [react-intro](https://github.com/mendlik/react-intro) - Introduction to react and redux.
-- [java-webpack-example](https://github.com/mendlik/java-webpack-example) - Advanced example showing how to use a module bundler in  a Java project.
-
-Tip: [How to enable LiveReload in IntelliJ](http://stackoverflow.com/a/35895848/2284884)
+## Best Practice: Create VM user
+-WIP
 
 <hr/>
+Cloned repo can be found here: https://gitlab.com/twn-devops-bootcamp/latest/05-cloud/java-react-example
 Original project can be found here: https://github.com/pmendelski/java-react-example 
