@@ -13,7 +13,9 @@ An example of how to deploy an existing Java-React application on a Digital Ocea
 - Clone the repository (original repos cited below)
 - On your local machine, build the application using `gradle build`
 - The .jar file will be in build/libs - copy to your Droplet using `scp <file path> <root@droplet-public-IP:/root>`
-- On the Doplet in the directory of the copied file, run the application using `java -jar <file.jar>` - run in the background by adding `&&` to the command
+- On the Doplet in the directory of the copied file, run the application using `java -jar <file.jar>` - run in the background by adding `&` to the command
+- Back on Digital Ocean, add a firewall rule to allow inbound connections to TCP - 7071
+- On a web browser, access the running application using <Droplet-public-IP>:7071
 
 ## Best Practice: Create VM user
 - On the Droplet, create a new user using `adduser <username>`
